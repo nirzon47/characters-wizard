@@ -1,6 +1,6 @@
 const Header = () => {
 	return (
-		<header className='flex items-center justify-between p-4 bg-primary-content'>
+		<header className='sticky top-0 flex items-center justify-between p-4 bg-primary-content'>
 			<div className='flex items-center gap-16'>
 				{/* TODO: Add Link from react router */}
 				<h2 className='font-mono text-xl font-bold md:text-2xl'>

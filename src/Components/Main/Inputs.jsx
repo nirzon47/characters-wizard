@@ -6,13 +6,47 @@ const Inputs = () => {
 		dispatch({ type: 'SET_TEXT', payload: e.target.value })
 	}
 
+	const alternateText = (text) => {
+		const newText = []
+
+		for (let i = 0; i < text.length; i++) {
+			if (i % 2 === 0) {
+				newText.push(text[i].toUpperCase())
+			} else {
+				newText.push(text[i].toLowerCase())
+			}
+		}
+
+		return newText.join('')
+	}
+
 	const handleText = (state, action) => {
+		if (!action.payload) {
+			return
+		}
+
 		switch (action.type) {
 			case 'SET_TEXT':
 				return action.payload
 			case 'SET_TEXT_UPPERCASE':
 				toast('Converted to uppercase')
 				return action.payload.toUpperCase()
+			case 'SET_TEXT_LOWERCASE':
+				toast('Converted to lowercase')
+				return action.payload.toLowerCase()
+			case 'SET_TEXT_ALTERNATE':
+				toast('Converted to alternate case')
+				return alternateText(action.payload)
+			case 'SET_TEXT_CLEAR':
+				toast('Cleared')
+				return (action.payload = '')
+			case 'COPY_TO_CLIPBOARD':
+				toast('Copied to Clipboard')
+				navigator.clipboard.writeText(action.payload)
+				return action.payload
+			case 'SET_TEXT_REMOVE_SPACES':
+				toast('Removed Extra Spaces')
+				return action.payload.replace(/ +/g, ' ').trim()
 			default:
 				return state
 		}
@@ -38,13 +72,46 @@ const Inputs = () => {
 				>
 					Convert to UPPERCASE
 				</button>
-				<button className='btn btn-accent'>Convert to lowercase</button>
-				<button className='btn btn-warning'>
+				<button
+					className='btn btn-accent'
+					onClick={() =>
+						dispatch({ type: 'SET_TEXT_LOWERCASE', payload: text })
+					}
+				>
+					Convert to lowercase
+				</button>
+				<button
+					className='btn btn-warning'
+					onClick={() =>
+						dispatch({ type: 'SET_TEXT_ALTERNATE', payload: text })
+					}
+				>
 					Convert to aLtErNaTe CaSe
 				</button>
-				<button className='btn btn-error'>Clear Text</button>
-				<button className='btn btn-success'>Copy to Clipboard</button>
-				<button className='btn btn-info'>Remove Extra Spaces</button>
+				<button
+					className='btn btn-error'
+					onClick={() =>
+						dispatch({ type: 'SET_TEXT_CLEAR', payload: text })
+					}
+				>
+					Clear Text
+				</button>
+				<button
+					className='btn btn-success'
+					onClick={() =>
+						dispatch({ type: 'COPY_TO_CLIPBOARD', payload: text })
+					}
+				>
+					Copy to Clipboard
+				</button>
+				<button
+					className='btn btn-info'
+					onClick={() =>
+						dispatch({ type: 'SET_TEXT_REMOVE_SPACES', payload: text })
+					}
+				>
+					Remove Extra Spaces
+				</button>
 			</div>
 			<div className='divider'></div>
 			<div className='mt-4'>
