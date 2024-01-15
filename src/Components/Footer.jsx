@@ -3,9 +3,11 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 const Footer = () => {
 	return (
 		<footer className='items-center p-4 footer bg-neutral text-neutral-content'>
-			<aside className='items-center grid-flow-col'>
+			<aside className='items-center grid-flow-col gap-6'>
 				<img src='/favicon.ico' alt='Branding' className='h-14' />
-				<p className='font-medium'>Made with ❤️ by Nirzon Karmakar</p>
+				<p className='text-lg font-medium'>
+					Made with ❤️ by Nirzon Karmakar
+				</p>
 			</aside>
 			<nav className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>
 				<a
