@@ -15,14 +15,14 @@ const Footer = () => {
 					target='_blank'
 					rel='noreferrer'
 				>
-					<FaGithub className='text-4xl duration-200 hover:text-blue-500' />
+					<FaGithub className='text-4xl duration-200 hover:text-amber-950' />
 				</a>
 				<a
 					href='https://linkedin.com/in/nirzon'
 					target='_blank'
 					rel='noreferrer'
 				>
-					<FaLinkedin className='text-4xl duration-200 hover:text-blue-500' />
+					<FaLinkedin className='text-4xl duration-200 hover:text-amber-950' />
 				</a>
 			</nav>
 		</footer>

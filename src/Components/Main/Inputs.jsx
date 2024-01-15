@@ -40,7 +40,7 @@ const Inputs = () => {
 						</span>
 					</p>
 				</div>
-				<div className='grid'>
+				<div className='grid my-8'>
 					<p className='pl-2 mb-2 font-mono text-lg font-medium'>
 						Source Text
 					</p>
