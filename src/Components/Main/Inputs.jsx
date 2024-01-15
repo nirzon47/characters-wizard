@@ -1,13 +1,43 @@
+import { useReducer } from 'react'
+import { toast } from 'react-toastify'
+
 const Inputs = () => {
+	const handleTextareaChange = (e) => {
+		dispatch({ type: 'SET_TEXT', payload: e.target.value })
+	}
+
+	const handleText = (state, action) => {
+		switch (action.type) {
+			case 'SET_TEXT':
+				return action.payload
+			case 'SET_TEXT_UPPERCASE':
+				toast('Converted to uppercase')
+				return action.payload.toUpperCase()
+			default:
+				return state
+		}
+	}
+
+	const [text, dispatch] = useReducer(handleText, '')
+
 	return (
 		<div className='grid mb-8'>
 			<p className='pl-2 mb-2 font-mono text-lg font-medium'>Source Text</p>
 			<textarea
 				className='font-mono text-lg resize-none textarea textarea-bordered h-36'
 				placeholder='Enter Text Here....'
+				value={text}
+				onChange={handleTextareaChange}
 			></textarea>
 			<div className='flex flex-wrap gap-4 mt-4'>
-				<button className='btn btn-accent'>Convert to UPPERCASE</button>
+				<button
+					className='btn btn-accent'
+					onClick={() =>
+						dispatch({ type: 'SET_TEXT_UPPERCASE', payload: text })
+					}
+				>
+					Convert to UPPERCASE
+				</button>
 				<button className='btn btn-accent'>Convert to lowercase</button>
 				<button className='btn btn-warning'>
 					Convert to aLtErNaTe CaSe
@@ -48,6 +78,7 @@ const Inputs = () => {
 						className='font-mono text-lg resize-none textarea textarea-bordered h-36'
 						placeholder='Output Text'
 						disabled
+						value={text}
 					></textarea>
 				</div>
 			</div>
