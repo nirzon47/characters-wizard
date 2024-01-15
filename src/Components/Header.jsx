@@ -7,7 +7,7 @@ const Header = () => {
 					Characters Wizard
 				</h2>
 				<nav>
-					<ul className='flex gap-6 font-semibold text-blue-500'>
+					<ul className='flex gap-6 text-base font-semibold'>
 						<li className='duration-200 hover:text-blue-700'>About</li>
 						<li className='duration-200 hover:text-blue-700'>Contact</li>
 					</ul>
