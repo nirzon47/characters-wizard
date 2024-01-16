@@ -1,10 +1,13 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
 	return (
 		<footer className='items-center p-4 footer bg-neutral text-neutral-content'>
 			<aside className='items-center grid-flow-col gap-6'>
-				<img src='/favicon.ico' alt='Branding' className='h-14' />
+				<Link to={'/'}>
+					<img src='/favicon.ico' alt='Branding' className='h-14' />
+				</Link>
 				<p className='text-lg font-medium'>
 					Made with ❤️ by Nirzon Karmakar
 				</p>
