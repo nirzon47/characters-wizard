@@ -11,7 +11,7 @@ const Footer = () => {
 			</aside>
 			<nav className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>
 				<a
-					href='https://github.com/nirzon47'
+					href='https://github.com/nirzon47/characters-wizard'
 					target='_blank'
 					rel='noreferrer'
 				>

@@ -17,7 +17,7 @@ const Header = () => {
 	const [theme, dispatchTheme] = useReducer(handleThemeChange, 'autumn')
 
 	return (
-		<header className='sticky top-0 flex items-center justify-between p-4 bg-primary-content'>
+		<header className='sticky top-0 z-50 flex items-center justify-between p-4 bg-primary-content'>
 			<div className='flex items-center gap-16'>
 				{/* TODO: Add Link from react router */}
 				<h2 className='font-mono text-xl font-bold md:text-2xl'>
