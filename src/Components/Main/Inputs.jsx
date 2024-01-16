@@ -2,10 +2,22 @@ import { useReducer } from 'react'
 import { toast } from 'react-toastify'
 
 const Inputs = () => {
+	/**
+	 * Handles the change event of the textarea.
+	 *
+	 * @param {Event} e - The event object.
+	 * @return {void} This function does not return a value.
+	 */
 	const handleTextareaChange = (e) => {
 		textDispatch({ type: 'SET_TEXT', payload: e.target.value })
 	}
 
+	/**
+	 * Applies alternate casing to each character of the input text.
+	 *
+	 * @param {string} text - The input text to be processed.
+	 * @return {string} The processed text with alternate casing.
+	 */
 	const alternateText = (text) => {
 		const newText = []
 
@@ -20,6 +32,12 @@ const Inputs = () => {
 		return newText.join('')
 	}
 
+	/**
+	 * Calculates the statistics of a given text.
+	 *
+	 * @param {string} text - The input text.
+	 * @return {object} - An object containing the word count, character count, and reading time of the text.
+	 */
 	const getStats = (text) => {
 		const words = text.trim().split(/\s+/)
 		const wordCount = words.length
@@ -28,9 +46,16 @@ const Inputs = () => {
 		return { wordCount, characterCount, readingTime }
 	}
 
+	/**
+	 * Handles the text based on the given state and action.
+	 *
+	 * @param {object} state - The current state of the application.
+	 * @param {object} action - The action being dispatched.
+	 * @return {object} The updated state after handling the text.
+	 */
 	const handleText = (state, action) => {
+		// Handles cases where the text is being cleared and the payload is nothing
 		if (!action.payload) {
-			toast.error('No source text')
 			return {
 				text: '',
 				stats: {
@@ -41,7 +66,8 @@ const Inputs = () => {
 			}
 		}
 
-		if (!action.payload.text) {
+		// Handles cases where there are no text and we are also not setting text
+		if (!action.payload.text && action.type != 'SET_TEXT') {
 			toast.error('No source text')
 			return {
 				text: '',
@@ -61,24 +87,28 @@ const Inputs = () => {
 				}
 			case 'SET_TEXT_UPPERCASE':
 				toast.success('Converted to uppercase')
+
 				return {
 					text: action.payload.text.toUpperCase(),
 					stats: getStats(action.payload.text),
 				}
 			case 'SET_TEXT_LOWERCASE':
 				toast.success('Converted to lowercase')
+
 				return {
 					text: action.payload.text.toLowerCase(),
 					stats: getStats(action.payload.text),
 				}
 			case 'SET_TEXT_ALTERNATE':
 				toast.success('Converted to alternate case')
+
 				return {
 					text: alternateText(action.payload.text),
 					stats: getStats(action.payload.text),
 				}
 			case 'SET_TEXT_CLEAR':
 				toast.success('Cleared')
+
 				return {
 					text: '',
 					stats: {
@@ -90,9 +120,11 @@ const Inputs = () => {
 			case 'COPY_TO_CLIPBOARD':
 				toast.success('Copied to Clipboard')
 				navigator.clipboard.writeText(action.payload.text)
+
 				return action.payload
 			case 'SET_TEXT_REMOVE_SPACES':
 				toast.success('Removed Extra Spaces')
+
 				return {
 					text: action.payload.text.replace(/ +/g, ' '),
 					stats: getStats(action.payload.text.replace(/ +/g, ' ')),

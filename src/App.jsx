@@ -1,23 +1,34 @@
-import { ToastContainer } from 'react-toastify'
-import Footer from './Components/Footer'
-import Header from './Components/Header'
-// import Main from './Components/Main/Main'
+import Main from './Components/Main/Main'
+import About from './Components/About'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import 'react-toastify/dist/ReactToastify.min.css'
-import About from './Components/About'
+import Layout from './Components/Layout'
+
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <Layout />,
+		children: [
+			{
+				path: '/',
+				element: <Main />,
+			},
+			{
+				path: '/about',
+				element: <About />,
+			},
+			{
+				path: '/contact',
+				element: <h1>Placeholder</h1>,
+			},
+		],
+		errorElement: <h1>Error</h1>,
+	},
+])
 
 const App = () => {
-	return (
-		<div className='relative'>
-			<Header />
-			<div className='px-12 mt-12'>
-				{/* <Main /> */}
-				<About />
-			</div>
-			<Footer />
-			<ToastContainer autoClose={1000} hideProgressBar theme='colored' />
-		</div>
-	)
+	return <RouterProvider router={router} />
 }
 
 export default App
