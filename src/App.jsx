@@ -13,7 +13,7 @@ const App = () => {
 				<Main />
 			</div>
 			<Footer />
-			<ToastContainer autoClose={1500} hideProgressBar />
+			<ToastContainer autoClose={1000} hideProgressBar theme='colored' />
 		</div>
 	)
 }

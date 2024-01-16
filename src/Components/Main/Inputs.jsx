@@ -41,6 +41,18 @@ const Inputs = () => {
 			}
 		}
 
+		if (!action.payload.text) {
+			toast.error('No source text')
+			return {
+				text: '',
+				stats: {
+					wordCount: 0,
+					characterCount: 0,
+					readingTime: 0,
+				},
+			}
+		}
+
 		switch (action.type) {
 			case 'SET_TEXT':
 				return {
