@@ -1,5 +1,6 @@
 import { useReducer } from 'react'
 import { FaSun, FaMoon } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 	const handleThemeChange = (state) => {
@@ -19,14 +20,21 @@ const Header = () => {
 	return (
 		<header className='sticky top-0 z-50 flex items-center justify-between p-4 bg-primary-content'>
 			<div className='flex items-center gap-16'>
-				{/* TODO: Add Link from react router */}
-				<h2 className='font-mono text-xl font-bold md:text-2xl'>
-					Characters Wizard
-				</h2>
+				<Link to={'/'}>
+					<h2 className='font-mono text-xl font-bold duration-200 md:text-2xl hover:text-blue-700'>
+						Characters Wizard
+					</h2>
+				</Link>
 				<nav>
 					<ul className='flex gap-6 text-base font-semibold'>
-						<li className='duration-200 hover:text-blue-700'>About</li>
-						<li className='duration-200 hover:text-blue-700'>Contact</li>
+						<Link to={'/about'}>
+							<li className='duration-200 hover:text-blue-700'>About</li>
+						</Link>
+						<Link to={'/contact'}>
+							<li className='duration-200 hover:text-blue-700'>
+								Contact
+							</li>
+						</Link>
 					</ul>
 				</nav>
 			</div>

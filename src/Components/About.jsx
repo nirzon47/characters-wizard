@@ -1,10 +1,10 @@
 const About = () => {
 	return (
-		<div className='flex flex-col justify-center h-screen gap-36'>
-			<h1 className='mb-8 text-3xl font-semibold text-center text-primary'>
+		<div className='flex flex-col justify-center h-[90vh] gap-36'>
+			<h1 className='mb-6 text-3xl font-semibold text-center text-primary'>
 				About
 			</h1>
-			<div className='grid gap-4 mb-8'>
+			<div className='grid gap-4 mb-6'>
 				<div className='collapse collapse-arrow bg-base-200'>
 					<input
 						type='checkbox'
