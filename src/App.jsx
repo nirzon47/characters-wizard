@@ -1,9 +1,11 @@
 import Main from './Components/Main/Main'
 import About from './Components/About'
+import Layout from './Components/Layout'
+import Contact from './Components/Contact'
+import Error from './Components/Error'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import 'react-toastify/dist/ReactToastify.min.css'
-import Layout from './Components/Layout'
 
 const router = createBrowserRouter([
 	{
@@ -20,10 +22,10 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/contact',
-				element: <h1>Placeholder</h1>,
+				element: <Contact />,
 			},
 		],
-		errorElement: <h1>Error</h1>,
+		errorElement: <Error />,
 	},
 ])
 
